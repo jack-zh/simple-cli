@@ -1,5 +1,5 @@
 all = cli
-
+CC=clang
 YACC = bison -d -v
 LEX = flex
 
