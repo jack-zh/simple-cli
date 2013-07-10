@@ -8,7 +8,7 @@ objs = main.o readline.o lookup.o rpc_cli.o
 CFLAGS = -Wall 
 
 $(all):parser.c lexer.c $(objs)
-	gcc -I. -o $@ $^ -lreadline
+	gcc -I. -o $@ $^ -lreadline -lncurses
 %.c: %.l
 	$(LEX) -t $^ > $@
 
