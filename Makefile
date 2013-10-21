@@ -3,9 +3,9 @@ CC=clang
 YACC = bison -d -v
 LEX = flex
 
-objs = main.o readline.o lookup.o rpc_cli.o   
+objs = main.o readline.o lookup.o rpc_cli.o
 
-CFLAGS = -Wall 
+CFLAGS = -Wall
 
 $(all):parser.c lexer.c $(objs)
 	gcc -I. -o $@ $^ -lreadline -lncurses
