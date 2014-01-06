@@ -16,7 +16,7 @@ void yyerror(char *s)
 
 %union
 {
-    int  ival;	
+    int  ival;    
     char *sptr;
 }
 
@@ -28,38 +28,38 @@ void yyerror(char *s)
 %%
 
 input:
-	|	input line
-	{
-		printPrompt();
-	}
-	;
+    |    input line
+    {
+        printPrompt();
+    }
+    ;
 
 line:
-	EOS
-	{
-		clear_name_table();
-	}
-	|	command
-	|	error EOS
-	{
-		clear_name_table();
-		yyerrok;
-	}
-	;
+    EOS
+    {
+        clear_name_table();
+    }
+    |    command
+    |    error EOS
+    {
+        clear_name_table();
+        yyerrok;
+    }
+    ;
 
 command:
-	 	testcmds
-	|	EXIT EOS
-	{
-	    YYACCEPT;
-	}
+         testcmds
+    |    EXIT EOS
+    {
+        YYACCEPT;
+    }
 ;
 
 testcmds:
-	ZZH  EOS 
-	{
-		EN = cli_action();		
-	}
+    ZZH  EOS 
+    {
+        EN = cli_action();        
+    }
     | ZZH _INT_ EOS
     {
         EN = cli_action_1($2);
@@ -70,6 +70,6 @@ testcmds:
 
 void start_cli(char *cmd, FILE *fp)
 {      
-	hy_switch_to_file(stdin);
-	yyparse();
+    hy_switch_to_file(stdin);
+    yyparse();
 }

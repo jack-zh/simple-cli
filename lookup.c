@@ -14,10 +14,10 @@ typedef struct
     token_ent token_table[] =
     {
     
-        { "debug",			DEBUG,	1 },
-        { "exit",          	EXIT,   1 },
-        { "zzh",           	ZZH,	3 },
-	    {  NULL,           	0,		0 }
+        { "debug",            DEBUG,    1 },
+        { "exit",              EXIT,   1 },
+        { "zzh",               ZZH,    3 },
+        {  NULL,               0,        0 }
     };
 
     int str_match(char *str1, char *str2, int min_match)

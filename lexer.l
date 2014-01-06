@@ -53,51 +53,51 @@ ident    [a-zA-Z]+[a-zA-Z0-9_-]*
 %%
 
 
-{integer}		{
-			yylval.ival = atoi(yytext);
-			return _INT_;
-		}
-{ident}		{
-			int token;
-			token = find_token(yytext);
-			
-			if (token > 0)
-			{
-				return token;
-			}
-			yylval.sptr = add_name_table(yytext);
-			
-			return _NAME_;
-		}
-[\r\n]		{
-			return EOS;
-		}
+{integer}        {
+            yylval.ival = atoi(yytext);
+            return _INT_;
+        }
+{ident}        {
+            int token;
+            token = find_token(yytext);
+            
+            if (token > 0)
+            {
+                return token;
+            }
+            yylval.sptr = add_name_table(yytext);
+            
+            return _NAME_;
+        }
+[\r\n]        {
+            return EOS;
+        }
 
 %%
 
 int yywrap(void)
 {
-	return 1;
+    return 1;
 }
 
 int hy_is_interactive(void)
 {
-	return yy_current_buffer->yy_is_interactive;
+    return yy_current_buffer->yy_is_interactive;
 }
 
 int hy_switch_to_file(FILE* fp)
 {
-	yy_switch_to_buffer(yy_create_buffer(fp, YY_BUF_SIZE));
+    yy_switch_to_buffer(yy_create_buffer(fp, YY_BUF_SIZE));
 
-	return 0;
+    return 0;
 }
 
 int hy_switch_to_buffer(char *cmd)
 {
-	if(cmd)
-		yy_switch_to_buffer(yy_scan_string(cmd));
+    if(cmd)
+        yy_switch_to_buffer(yy_scan_string(cmd));
 
-	return 0;
+    return 0;
 }
 
 
